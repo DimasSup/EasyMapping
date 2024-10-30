@@ -78,6 +78,15 @@ static const char scalarTypes[] = {
 		if ([type isEqualToString:@"NSSet"]) {
 			return [NSSet setWithArray:value];
 		}
+            else if([type isEqualToString:@"NSNumber"]){
+            if([value isKindOfClass:NSString.class]){
+                return @([value doubleValue]);
+            }else if([value isKindOfClass:NSNumber.class]){
+                return value;
+            }else{
+                return 0;
+            }
+        }
 		else if ([type isEqualToString:@"NSMutableSet"]) {
             return [NSMutableSet setWithArray:value];
 		}
